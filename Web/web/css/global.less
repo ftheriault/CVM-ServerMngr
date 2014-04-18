@@ -1,10 +1,10 @@
 /* ==================================== */
 /* General variables                    */
 /* ------------------------------------ */
-@import url(http://fonts.googleapis.com/css?family=Share+Tech);
+@import url(http://fonts.googleapis.com/css?family=Dosis);
 
 @backgroundColor : white;
-@fontFamily : 'Share Tech', sans-serif;
+@fontFamily : 'Dosis', sans-serif;
 @textColor : #444;
 @headingColor : darken(@textColor, 20%);
 @pageWidth : 1000px;
@@ -269,11 +269,12 @@ header, footer {
 
 	ul li {
 		.box;
-		float: left;
+		float:left;
 		list-style-type: none;
 		margin-right: @tileMargin;
 		margin-bottom: @tileMargin;
 		background-color: @tileBackgroundColor1;
+		width: @tileSize;
 	}
 
 	ul li:nth-child(4n+1) {
@@ -288,18 +289,23 @@ header, footer {
 		background-color: @tileBackgroundColor4;
 	}
 
-	ul li:last {
-		clear: both;
+	ul li:last-child {
+		clear:both;
+		float:none;
 	}
 
 	ul li a {
 		display: block;
-		width: @tileSize;
-		min-height: @tileSize/1.5;
-		padding-top: @tileSize/5;
+		line-height: @tileSize/1.2;
+		padding-top: 0;
 		padding-bottom: 0;
 		text-align: center;
 		color : @tileColor;
+	}
+
+	ul li a img {
+		position: relative;
+		top:15px;
 	}
 
 	ul li a:hover {

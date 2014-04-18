@@ -7,7 +7,7 @@ namespace App;
  *
  * @property-read \App\Pixie $pixie Pixie dependency container
  */
-class Common extends \PHPixie\Controller {
+abstract class Common extends \PHPixie\Controller {
 
 	protected $view;
 
@@ -15,10 +15,8 @@ class Common extends \PHPixie\Controller {
 		$this->view = $this->pixie->view('layout');
 		$this->view->loggedIn = $this->pixie->session->get("loggedIn", false);
 
-		if ($this->request->param('controller') != "index" && 
-			!$this->view->loggedIn) {
+		if ($this->isPrivate() && !$this->view->loggedIn) {
 			$this->redirect('/');
-			$this->execute=false;
 		}
 
 	}
@@ -27,4 +25,5 @@ class Common extends \PHPixie\Controller {
 		$this->response->body = $this->view->render();
 	}
 
+	public abstract function isPrivate();
 }
